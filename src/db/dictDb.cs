@@ -38,11 +38,8 @@ namespace translate.dict.db
             var collection = GetCollection();
 
             collection.InsertMany(entries);
-        }
-
-        
-    }
-    
+        }        
+    }    
 }
 
 
