@@ -1,13 +1,5 @@
 using System;
-using System.IO;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using translate.dict.model.dict;
 using System.Collections.Generic;
@@ -35,11 +27,13 @@ namespace translate.dict.db
         }
 
         public static void AddRange(List<DictEntry> entries) {
-            var collection = GetCollection();
+            GetCollection().InsertMany(entries);
+        }
 
-            collection.InsertMany(entries);
-        }        
-    }    
+        public static void RemoveRangeById(List<String> entries) {
+            GetCollection().DeleteManyAsync(x => entries.Contains(x.Id.ToString()));
+        }
+    }
 }
 
 
