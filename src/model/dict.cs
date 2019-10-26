@@ -32,6 +32,8 @@ namespace translate.dict.model.dict
     public class DictResponse
     {
         public string DictSource { get; set; }
+
+        public string SourcePhonetic { get; set; }
         
         public List<ResponseEntry> Entries { get; set; }
 
@@ -47,6 +49,8 @@ namespace translate.dict.model.dict
         public string TargetClassification { get; set; }
 
         public string TargetAnswer { get; set; }
+
+        public string TargetPhonetic { get; set; }
 
         public BsonDateTime CreatedOn { get; set; }
 
